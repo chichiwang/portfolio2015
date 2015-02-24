@@ -1,0 +1,20 @@
+NOTES:
+
+- Transparent background pages
+- Single background for app
+- Stagger build animation for page contents
+
+-- Add webkit smooth scrolling for ios
+
+-------
+
+TODO:
+
+ - Prove page transitions
+ - Block out primary elements and transitions
+ - Block out pages:
+   - Home (Work)
+     - Material design (component blocks with properties)
+   - Endorsements (LinkedIn)
+   - Resume (Link-out resume.mrchichiwang.com + pdf d/l)
+ - Wireframe mode - full functionality
