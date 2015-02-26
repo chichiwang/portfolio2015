@@ -11,6 +11,8 @@ setDimensions = (val) ->
 	@value.height = val.height
 setOrientation = (val) ->
 	@value.orientation = val
+setHeaderHeight = (val) ->
+	@value.header_height = val
 
 # Instantiate store class
 SiteStore = new StoreClass
@@ -19,9 +21,11 @@ SiteStore = new StoreClass
 		width: undefined
 		height: undefined
 		orientation: undefined
+		header_height: undefined
 
 # Register handlers to store
 SiteStore.registerAction Const.SET_DIMENSIONS, setDimensions
 SiteStore.registerAction Const.SET_ORIENTATION, setOrientation
+SiteStore.registerAction Const.SET_HEADER_HEIGHT, setHeaderHeight
 
 module.exports = SiteStore

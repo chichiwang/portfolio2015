@@ -11,6 +11,12 @@ _resizeHandler = ->
 	cH = Store.get 'height'
 	w = window.innerWidth
 	h = window.innerHeight
+	
+	# Set the header height
+	header = document.getElementById('Header')
+	if header
+		Actions.call null, Constant.SET_HEADER_HEIGHT, header.getBoundingClientRect().height
+
 	if (w isnt cW) or (h isnt cH)
 		Actions.call null, Constant.SET_DIMENSIONS, w, h
 	_orientationHandler()

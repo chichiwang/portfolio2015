@@ -2,6 +2,8 @@
 'use strict'
 
 # Stores
+SiteConst = require 'components/site/const'
+SiteActions = require 'components/site/actions'
 SiteStore = require 'components/site/store'
 
 # Helpers and utilities
@@ -27,7 +29,7 @@ Root = React.createClass
 		site: SiteStore
 
 	render: ->
-		# console.log 'render', @state
+		console.log 'render', @state
 		name = @getRoutes().reverse()[0].name
 
 		# Determine page-slide transition direction
@@ -41,11 +43,15 @@ Root = React.createClass
 		currPage = name
 		
 		<div id="Root" className={transitionDirection}>
-			<header></header>
+			<header id="Header"></header>
 			<TransitionGroup transitionName="page">
 				<RouteHandler key={name} params={{site: @state.site}} />
 			</TransitionGroup>
 		</div>
+
+	componentDidMount: ->
+		SiteActions.call null, SiteConst.SET_HEADER_HEIGHT, document.getElementById('Header').getBoundingClientRect().height
+	
 
 # Route Definitions
 routes = (

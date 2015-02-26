@@ -12,6 +12,9 @@ setDimensions = (width, height) ->
 setOrientation = (orientation) ->
 	return orientation
 
+setHeaderHeight = (h) ->
+	return h
+
 # Instantiate actions class
 SiteActions = new ActionsClass
 	dispatcher: Dispatcher
@@ -19,5 +22,6 @@ SiteActions = new ActionsClass
 # Register actions methods
 SiteActions.register Const.SET_DIMENSIONS, setDimensions
 SiteActions.register Const.SET_ORIENTATION, setOrientation
+SiteActions.register Const.SET_HEADER_HEIGHT, setHeaderHeight
 
 module.exports = SiteActions
