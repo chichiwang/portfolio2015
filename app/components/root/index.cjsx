@@ -16,6 +16,10 @@ TransitionGroup = React.addons.CSSTransitionGroup
 Home = require 'components/home'
 Work = require 'components/work'
 
+pages = ['home', 'work', 'endorsements']
+currPage = undefined
+transitionDirection = ''
+
 Root = React.createClass
 	displayName: 'Root'
 	mixins: [SyncState, Router.State]
@@ -23,12 +27,23 @@ Root = React.createClass
 		site: SiteStore
 
 	render: ->
-		console.log 'render', @state
+		# console.log 'render', @state
 		name = @getRoutes().reverse()[0].name
+
+		# Determine page-slide transition direction
+		if currPage and name in pages
+			lastIdx = pages.indexOf currPage
+			currIdx = pages.indexOf name
+
+			transitionDirection = 'left' if lastIdx < currIdx
+			transitionDirection = 'right' if lastIdx > currIdx
+			transitionDirection = '' if lastIdx is currIdx
+		currPage = name
 		
-		<div id="Root">
+		<div id="Root" className={transitionDirection}>
+			<header></header>
 			<TransitionGroup transitionName="page">
-				<RouteHandler key={name} className="test" />
+				<RouteHandler key={name} params={{site: @state.site}} />
 			</TransitionGroup>
 		</div>
 
