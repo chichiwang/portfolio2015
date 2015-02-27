@@ -6,7 +6,11 @@ Home = React.createClass
 
 	render: ->
 		# console.log 'render Home: ', @props
-		<div className="home page">
+		styles = {}
+		hH = @props.params.site.header_height
+		styles['padding-top'] = if hH then hH else 0
+
+		<div className="home page" style={styles}>
 			Home Page
 		</div>
 

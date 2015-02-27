@@ -18,9 +18,19 @@ TransitionGroup = React.addons.CSSTransitionGroup
 Home = require 'components/home'
 Work = require 'components/work'
 
+# Moduel global functions and variables
 pages = ['home', 'work', 'endorsements']
 currPage = undefined
 transitionDirection = ''
+
+SetTransitionDirection = (pageName) ->
+	if currPage and pageName in pages
+		lastIdx = pages.indexOf currPage
+		currIdx = pages.indexOf pageName
+
+		transitionDirection = 'left' if lastIdx < currIdx
+		transitionDirection = 'right' if lastIdx > currIdx
+		transitionDirection = '' if lastIdx is currIdx
 
 Root = React.createClass
 	displayName: 'Root'
@@ -30,20 +40,15 @@ Root = React.createClass
 
 	render: ->
 		console.log 'render', @state
-		name = @getRoutes().reverse()[0].name
-
 		# Determine page-slide transition direction
-		if currPage and name in pages
-			lastIdx = pages.indexOf currPage
-			currIdx = pages.indexOf name
-
-			transitionDirection = 'left' if lastIdx < currIdx
-			transitionDirection = 'right' if lastIdx > currIdx
-			transitionDirection = '' if lastIdx is currIdx
+		name = @getRoutes().reverse()[0].name
+		SetTransitionDirection name
 		currPage = name
 		
 		<div id="Root" className={transitionDirection}>
-			<header id="Header"></header>
+			<header id="Header">
+				Header
+			</header>
 			<TransitionGroup transitionName="page">
 				<RouteHandler key={name} params={{site: @state.site}} />
 			</TransitionGroup>

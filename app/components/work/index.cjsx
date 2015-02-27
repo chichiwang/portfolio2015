@@ -5,7 +5,12 @@ Work = React.createClass
 	displayName: 'Work'
 
 	render: ->
-		<div className="work page">
+		# console.log 'render Home: ', @props
+		styles = {}
+		hH = @props.params.site.header_height
+		styles['padding-top'] = if hH then hH else 0
+
+		<div className="work page" style={styles}>
 			Work Page
 		</div>
 
