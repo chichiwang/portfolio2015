@@ -15,6 +15,7 @@ Router = window.ReactRouter
 TransitionGroup = React.addons.CSSTransitionGroup
 
 # Child views
+Header = require 'components/header'
 Home = require 'components/home'
 Work = require 'components/work'
 
@@ -46,9 +47,7 @@ Root = React.createClass
 		currPage = name
 		
 		<div id="Root" className={transitionDirection}>
-			<header id="Header">
-				Header
-			</header>
+			<Header />
 			<TransitionGroup transitionName="page">
 				<RouteHandler key={name} params={{site: @state.site}} />
 			</TransitionGroup>

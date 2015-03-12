@@ -11,7 +11,9 @@ Home = React.createClass
 		styles['padding-top'] = if hH then hH else 0
 
 		<div className="home page" style={styles}>
-			Home Page
+			<div className="contents">
+				Home Page
+			</div>
 		</div>
 
 module.exports = Home

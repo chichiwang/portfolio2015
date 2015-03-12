@@ -13,6 +13,7 @@ TODO:
 
  [X] Prove page transitions
  [ ] Block out primary elements and transitions
+ [ ] Header and Navigation Menu
  [ ] Block out pages:
    [ ] Home
    	 [ ] Simple logo

@@ -11,7 +11,9 @@ Work = React.createClass
 		styles['padding-top'] = if hH then hH else 0
 
 		<div className="work page" style={styles}>
-			Work Page
+			<div className="contents">
+				Work Page
+			</div>
 		</div>
 
 module.exports = Work
